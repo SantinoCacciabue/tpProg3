@@ -12,3 +12,10 @@
 node_modules/
 src/main/frontend/generated/
 vite.generated.ts
+
+# .gitignore para proyectos Maven
+/target
+/.idea
+*.iml
+*.log
+.DS_Store
