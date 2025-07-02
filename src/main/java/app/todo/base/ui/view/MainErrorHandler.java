@@ -18,10 +18,10 @@ class MainErrorHandler {
     public VaadinServiceInitListener errorHandlerInitializer() {
         return (event) -> event.getSource().addSessionInitListener(
                 sessionInitEvent -> sessionInitEvent.getSession().setErrorHandler(errorEvent -> {
-                    log.error("An unexpected error occurred", errorEvent.getThrowable());
+                    log.error("Ha ocurrido un error", errorEvent.getThrowable());
                     errorEvent.getComponent().flatMap(Component::getUI).ifPresent(ui -> {
                         var notification = new Notification(
-                                "An unexpected error has occurred. Please try again later.");
+                                "Ha ocurrido un error. Por favor vuelva a intentarlo");
                         notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
                         notification.setPosition(Notification.Position.TOP_CENTER);
                         notification.setDuration(3000);

@@ -42,7 +42,7 @@ class TaskServiceIT {
     public void tasks_are_stored_in_the_database_with_the_current_timestamp() {
         var now = clock.instant();
         var due = LocalDate.of(2025, 2, 7);
-        taskService.createTask("Do this", due);
+        taskService.createTask("Do this", due, null);
         assertThat(taskService.list(PageRequest.ofSize(1))).singleElement()
                 .matches(task -> task.getDescription().equals("Do this") && due.equals(task.getDueDate())
                         && task.getCreationDate().isAfter(now));
@@ -50,7 +50,7 @@ class TaskServiceIT {
 
     @Test
     public void tasks_are_validated_before_they_are_stored() {
-        assertThatThrownBy(() -> taskService.createTask("X".repeat(Task.DESCRIPTION_MAX_LENGTH + 1), null))
+        assertThatThrownBy(() -> taskService.createTask("X".repeat(Task.DESCRIPTION_MAX_LENGTH + 1), null, null))
                 .isInstanceOf(ValidationException.class);
         assertThat(taskRepository.count()).isEqualTo(0);
     }

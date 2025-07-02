@@ -31,10 +31,10 @@ public final class MainLayout extends AppLayout {
 
     private Div createHeader() {
         // TODO Replace with real application logo and name
-        var appLogo = VaadinIcon.CUBES.create();
+        var appLogo = VaadinIcon.LAPTOP.create();
         appLogo.addClassNames(TextColor.PRIMARY, IconSize.LARGE);
 
-        var appName = new Span("My Todo Tp");
+        var appName = new Span("TP Prog III");
         appName.addClassNames(FontWeight.SEMIBOLD, FontSize.LARGE);
 
         var header = new Div(appLogo, appName);
@@ -59,7 +59,7 @@ public final class MainLayout extends AppLayout {
 
     private Component createUserMenu() {
         // TODO Replace with real user information and actions
-        var avatar = new Avatar("John Smith");
+        var avatar = new Avatar("Santino Cacciabue");
         avatar.addThemeVariants(AvatarVariant.LUMO_XSMALL);
         avatar.addClassNames(Margin.Right.SMALL);
         avatar.setColorIndex(5);
@@ -69,10 +69,10 @@ public final class MainLayout extends AppLayout {
         userMenu.addClassNames(Margin.MEDIUM);
 
         var userMenuItem = userMenu.addItem(avatar);
-        userMenuItem.add("John Smith");
-        userMenuItem.getSubMenu().addItem("View Profile").setEnabled(false);
-        userMenuItem.getSubMenu().addItem("Manage Settings").setEnabled(false);
-        userMenuItem.getSubMenu().addItem("Logout").setEnabled(false);
+        userMenuItem.add("Santino Cacciabue");
+        userMenuItem.getSubMenu().addItem("Ver perfil").setEnabled(false);
+        userMenuItem.getSubMenu().addItem("Configuración").setEnabled(false);
+        userMenuItem.getSubMenu().addItem("Cerrar sesión").setEnabled(false);
 
         return userMenu;
     }

@@ -1,6 +1,7 @@
 package app.todo.taskmanagement.domain;
 
 import app.todo.base.domain.AbstractEntity;
+import app.todo.usermanagement.domain.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import org.jspecify.annotations.Nullable;
@@ -30,9 +31,24 @@ public class Task extends AbstractEntity<Long> {
     @Nullable
     private LocalDate dueDate;
 
+    @Column(name = "done", columnDefinition = "boolean default false")
+    private Boolean done = false;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Override
     public @Nullable Long getId() {
         return id;
+    }
+
+    public void setDone(Boolean done){
+        this.done = done;
+    }
+
+    public Boolean isDone(){
+        return this.done;
     }
 
     public String getDescription() {
@@ -57,5 +73,14 @@ public class Task extends AbstractEntity<Long> {
 
     public void setDueDate(@Nullable LocalDate dueDate) {
         this.dueDate = dueDate;
+    }
+    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
